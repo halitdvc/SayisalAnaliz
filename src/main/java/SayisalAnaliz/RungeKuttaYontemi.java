@@ -1,13 +1,14 @@
-package org.example;
+package SayisalAnaliz;
 
 
-public class HeunYontemi {
+
+public class RungeKuttaYontemi {
     private double baslangicT;
     private double baslangicY;
     private double h;
     private int adimSayisi;
 
-    public HeunYontemi(double baslangicT, double baslangicY, double h, int adimSayisi) {
+    public RungeKuttaYontemi(double baslangicT, double baslangicY, double h, int adimSayisi) {
         this.baslangicT = baslangicT;
         this.baslangicY = baslangicY;
         this.h = h;
@@ -15,10 +16,10 @@ public class HeunYontemi {
     }
 
     private double differansiyelDenklem(double t, double y) {
-        return (t - y) / 2.0;
+        return (5.0 * t * t - y) / Math.exp(t + y);
     }
 
-    public void heunMetoduHesapla() {
+    public void rungeKuttaMetoduHesapla() {
         double t = this.baslangicT;
         double y = this.baslangicY;
         System.out.println("Başlangıç değerleri: t = " + t + ", y = " + y);
@@ -27,9 +28,9 @@ public class HeunYontemi {
             double k1 = this.h * this.differansiyelDenklem(t, y);
             double k2 = this.h * this.differansiyelDenklem(t + this.h, y + k1);
             double eskiY = y;
-            y += 0.5 * (k1 + k2);
+            y += (k1 + k2) / 2.0;
             t += this.h;
-            System.out.println("" + i + ". adım: t = " + t + ", y = " + y + ", k1 = " + k1 + ", k2 = " + k2 + ", formül: y = y + 0.5 * (k1 + k2) = " + eskiY + " + 0.5 * (" + k1 + " + " + k2 + ") = " + y);
+            System.out.println("" + i + ". adım: t = " + t + ", y = " + y + ", k1 = " + k1 + ", k2 = " + k2 + ", formül: y = y + (k1 + k2) / 2 = " + eskiY + " + (" + k1 + " + " + k2 + ") / 2 = " + y);
         }
 
     }

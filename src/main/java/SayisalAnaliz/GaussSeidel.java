@@ -1,4 +1,4 @@
-package org.example;
+package SayisalAnaliz;
 
 
 public class GaussSeidel {

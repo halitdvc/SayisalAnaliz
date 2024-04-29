@@ -1,4 +1,4 @@
-package org.example;
+package SayisalAnaliz;
 
 
 import java.util.Arrays;
